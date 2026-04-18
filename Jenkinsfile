@@ -21,6 +21,17 @@ pipeline {
             }
         }
 
+        stage('Docker Push'){
+            steps{
+                withCredentials([usernamePassword(credentialsId: 'dockerhub-credentials', usernameVariable: 'DOCKER_USER', passwordVariable: 'DOCKER_PASS')]){
+                    sh '''
+                    echo $DOCKER_PASS | docker login -u $DOCKER_USER --password-stdin
+                    docker push testforjenkins:0.0.1
+                    '''
+                }
+            }
+        }
+
         stage('Docker Run') {
             steps {
                 sh 'export DOCKER_HOST=tcp://host.docker.internal:2375 && docker run -t testforjenkins:0.0.1'
