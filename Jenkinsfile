@@ -26,7 +26,7 @@ pipeline {
                 withCredentials([usernamePassword(credentialsId: 'dockerhub-creds', usernameVariable: 'DOCKER_USER', passwordVariable: 'DOCKER_PASS')]){
                     sh '''
                     echo $DOCKER_PASS | docker login -u $DOCKER_USER --password-stdin
-                    export DOCKER_HOST=tcp://host.docker.internal:2375 && docker push testforjenkins:0.0.1
+                    export DOCKER_HOST=tcp://host.docker.internal:2375 && docker push arielbm5911/testforjenkins:0.0.1
                     '''
                 }
             }
