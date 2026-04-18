@@ -20,3 +20,5 @@ pipeline {
                 sh 'export DOCKER_HOST=tcp://host.docker.internal:2375 && docker build -t testforjenkins:0.0.1 .'
             }
         }
+    }
+}
