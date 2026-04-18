@@ -23,7 +23,7 @@ pipeline {
 
         stage('Docker Run') {
             steps {
-                sh 'export DOCKER_HOST=tcp://host.docker.internal:2375 && docker run -it testforjenkins:0.0.1'
+                sh 'export DOCKER_HOST=tcp://host.docker.internal:2375 && docker run -t testforjenkins:0.0.1'
             }
         }
     }
